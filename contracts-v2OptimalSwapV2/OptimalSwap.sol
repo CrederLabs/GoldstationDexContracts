@@ -64,7 +64,12 @@ contract OptimalSwap2 is IOptimalSwap {
 
     function getExpectedAmounts(
         GetExpectedAmountsParams calldata params
-    ) external view override returns (uint, uint) {
+    )
+        external
+        view
+        override
+        returns (GetExpectedAmountsReturn memory returnVal)
+    {
         IUniswapV2Pair pair = IUniswapV2Pair(
             uniswapFactory.getPair(params._fromToken, params._toToken)
         );
@@ -102,11 +107,21 @@ contract OptimalSwap2 is IOptimalSwap {
 
         // if max [fromToken] is available
         if (toTokenAmountIn <= amountOut) {
-            return (half, toTokenAmountIn);
+            returnVal = GetExpectedAmountsReturn(
+                half,
+                toTokenAmountIn,
+                0,
+                amountOut.sub(toTokenAmountIn)
+            );
         }
         // if max [toToken] is available
         else {
-            return (fromTokenAmountIn, amountOut);
+            returnVal = GetExpectedAmountsReturn(
+                fromTokenAmountIn,
+                amountOut,
+                half.sub(fromTokenAmountIn),
+                0
+            );
         }
     }
 

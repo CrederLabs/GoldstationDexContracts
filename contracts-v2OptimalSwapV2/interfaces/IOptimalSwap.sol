@@ -88,6 +88,13 @@ interface IOptimalSwap {
         uint amountDesired;
     }
 
+    struct GetExpectedAmountsReturn {
+        uint fromTokenAmount;
+        uint toTokenAmount;
+        uint fromTokenRest;
+        uint toTokenRest;
+    }
+
     function swapAndAddLiquidity(
         SwapAndAddLiquidityParams calldata params
     ) external returns (uint, uint, uint);
@@ -102,5 +109,5 @@ interface IOptimalSwap {
 
     function getExpectedAmounts(
         GetExpectedAmountsParams calldata params
-    ) external view returns (uint, uint);
+    ) external view returns (GetExpectedAmountsReturn memory);
 }
