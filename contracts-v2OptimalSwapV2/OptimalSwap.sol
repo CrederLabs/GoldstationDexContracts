@@ -62,6 +62,54 @@ contract OptimalSwap2 is IOptimalSwap {
         );
     }
 
+    function getExpectedAmounts(
+        GetExpectedAmountsParams calldata params
+    ) external view override returns (uint, uint) {
+        IUniswapV2Pair pair = IUniswapV2Pair(
+            uniswapFactory.getPair(params._fromToken, params._toToken)
+        );
+        address t0 = pair.token0();
+        (uint r0, uint r1) = getReserves(
+            GetReservesParams({
+                tokenA: params._fromToken,
+                tokenB: params._toToken
+            })
+        );
+        // same as fromTokenBalance
+        uint half = params.amountDesired / 2;
+        // same as toTokenBalance
+        uint amountOut = uniswapRouter.getAmountOut(
+            half,
+            params._fromToken == t0 ? r0 : r1,
+            params._fromToken == t0 ? r1 : r0
+        );
+        uint newR0;
+        uint newR1;
+        if (params._fromToken == t0) {
+            newR0 = r0 + half;
+            newR1 = r1 - amountOut;
+        } else {
+            newR0 = r0 - amountOut;
+            newR1 = r1 + half;
+        }
+
+        uint toTokenAmountIn = half.mul(
+            params._fromToken == t0 ? newR1 : newR0
+        ) / (params._fromToken == t0 ? newR0 : newR1);
+        uint fromTokenAmountIn = amountOut.mul(
+            params._toToken == t0 ? newR1 : newR0
+        ) / (params._toToken == t0 ? newR0 : newR1);
+
+        // if max [fromToken] is available
+        if (toTokenAmountIn <= amountOut) {
+            return (half, toTokenAmountIn);
+        }
+        // if max [toToken] is available
+        else {
+            return (fromTokenAmountIn, amountOut);
+        }
+    }
+
     function addLiquidity(
         AddLiquidityParams memory params
     ) internal returns (uint amountA, uint amountB, uint liquidity) {

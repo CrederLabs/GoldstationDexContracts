@@ -6,6 +6,7 @@ This Repository is forked from [Uniswap Labs](https://github.com/Uniswap)
 - UniswapV2Periphery : https://github.com/Uniswap/v2-periphery
 
 # URL
+
 [Swap](https://goldstation.io/exchange/swap)
 
 [Liquidity](https://goldstation.io/pool/v2)
@@ -18,6 +19,10 @@ This Repository is forked from [Uniswap Labs](https://github.com/Uniswap)
 
 `0x4Dee8682951256f76499e75d60BFB5EDD2347fbC`
 
+# Optimal Swap Contract Address
+
+`0x1AdbD7F2b8F7A223cC17ee2f8b20fBdbA851E2Ad`
+
 # Pair Addresses
 
 - KLAY-GPC : `0xCd13CD31fb61345Abe7B7376A4664784622817EE`
@@ -27,6 +32,7 @@ This Repository is forked from [Uniswap Labs](https://github.com/Uniswap)
 - GPC-WDIGAU: `0xB5e70F160077163a2D90F4828EF2eFF7e5f57915`
 
 # Token Addresses
+
 - GPC : `0x27397bFbeFD58A437f2636f80A8e70cFc363d4Ff`
 - GHUB : `0x4836cC1f355bB2A61c210EAA0CD3f729160CD95E`
 - GXA : `0xA80e96cCeB1419f9BD9F1c67F7978F51b534A11b`
@@ -41,6 +47,7 @@ This Repository is forked from [Uniswap Labs](https://github.com/Uniswap)
 > return summary data of entire pair pools
 
 response example
+
 ```json
 {
     "0x19Aac5f612f524B754CA7e7c41cbFa2E981A4432_0x27397bFbeFD58A437f2636f80A8e70cFc363d4Ff": {
