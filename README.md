@@ -21,7 +21,9 @@ This Repository is forked from [Uniswap Labs](https://github.com/Uniswap)
 
 # Optimal Swap Contract Address
 
-~~0x1AdbD7F2b8F7A223cC17ee2f8b20fBdbA851E2Ad~~(will be redeployed)
+~~0x1AdbD7F2b8F7A223cC17ee2f8b20fBdbA851E2Ad~~(deprecated)
+
+`0xCcd56f66318bD5A909ca550328b58C5575797167`
 
 # Pair Addresses
 
