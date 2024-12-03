@@ -42,7 +42,7 @@ This Repository is forked from [Uniswap Labs](https://github.com/Uniswap)
 
 # Public APIs for summary
 
-> API Host : https://api-hk.goldstation.io
+> API Host : https://api.goldstation.io
 
 ## 🔗[GET] /public/v2/uniswap
 
